@@ -17,10 +17,21 @@ class ContacForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.onSubmit(this.state);
-
+    const { name, number } = this.state;
+    const { onSubmit, contacts } = this.props;
+    const normalizedName = name.toLowerCase();
+    if (
+      contacts.some(
+        (contact) =>
+          contact.name.toLowerCase() === normalizedName ||
+          contact.number === number
+      )
+    ) {
+      alert(`Contact with such ${name} or ${number} is already in Phonebook`);
+      return;
+    }
+    onSubmit(this.state);
     this.reset();
-    console.log(this.state);
   };
 
   reset = () => {
