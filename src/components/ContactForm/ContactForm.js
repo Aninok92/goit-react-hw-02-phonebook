@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import shortid from "shortid";
+import s from "./ContactForm.module.scss";
 
 class ContacForm extends Component {
   state = {
@@ -28,6 +29,7 @@ class ContacForm extends Component {
       )
     ) {
       alert(`Contact with such ${name} or ${number} is already in Phonebook`);
+      this.reset();
       return;
     }
     onSubmit(this.state);
@@ -44,10 +46,11 @@ class ContacForm extends Component {
   render() {
     const { name, number } = this.state;
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label htmlFor={this.nameInputId}>
-          Name
+      <form className={s.form} onSubmit={this.handleSubmit}>
+        <label className={s.label} htmlFor={this.nameInputId}>
+          <span className={s.labelText}>Name</span>
           <input
+            className={s.input}
             type="text"
             name="name"
             value={name}
@@ -58,9 +61,10 @@ class ContacForm extends Component {
             id={this.nameInputId}
           />
         </label>
-        <label htmlFor={this.numberInputId}>
-          Number
+        <label className={s.label} htmlFor={this.numberInputId}>
+          <span className={s.labelText}>Number</span>
           <input
+            className={s.input}
             type="tel"
             name="number"
             value={number}
@@ -71,7 +75,9 @@ class ContacForm extends Component {
             id={this.numberInputId}
           />
         </label>
-        <button type="submit">Add Contact</button>
+        <button type="submit" className={s.button}>
+          Add Contact
+        </button>
       </form>
     );
   }

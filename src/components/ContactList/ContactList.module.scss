@@ -1,0 +1,21 @@
+@import "styles/shared.module.scss";
+@import "styles/button.module.scss";
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: start;
+}
+
+.contact {
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--secondary-text-color);
+  margin-right: 15px;
+}
