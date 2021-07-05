@@ -4,7 +4,7 @@ import Container from "../Container/Container";
 import ContactForm from "../ContactForm/ContactForm";
 import ContactList from "../ContactList/ContactList";
 import Filter from "../Filter/Filter";
-import s from "./App.module.scss";
+import Section from "../Section/Section";
 
 class App extends Component {
   state = {
@@ -57,17 +57,16 @@ class App extends Component {
 
     return (
       <Container>
-        <div className={s.wrapper}>
-          <h1 className={s.title}>Phonebook</h1>
+        <Section title="Phonebook">
           <ContactForm onSubmit={this.addContact} contacts={contacts} />
-
-          <h2 className={s.title}>Contacts</h2>
+        </Section>
+        <Section title="Contacts">
           <Filter value={filter} onChange={this.changeFilter} />
           <ContactList
             contacts={visibleContacts}
             onDeleteContact={this.deleteContact}
           />
-        </div>
+        </Section>
       </Container>
     );
   }
